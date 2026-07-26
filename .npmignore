@@ -1,0 +1,18 @@
+# Source
+src/
+
+# Tests
+__tests__/
+__fixtures__/
+__mocks__/
+
+# Config files
+.eslintrc.js
+tsconfig.json
+babel.config.js
+jest.config.js
+
+# Misc
+.github/
+.vscode/
+*.log

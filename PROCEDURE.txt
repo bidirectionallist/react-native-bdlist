@@ -1,0 +1,167 @@
+═══════════════════════════════════════════════════════════════
+  HOW TO PUBLISH react-native-bdlist TO NPM
+═══════════════════════════════════════════════════════════════
+
+PREREQUISITES
+─────────────
+1. Node.js installed (v18+)
+2. npm account at https://npmjs.com — sign up if you don't have one
+3. Git installed
+
+STEP 1 — SET UP YOUR PACKAGE LOCALLY
+─────────────────────────────────────
+1. Unzip this package to a folder, e.g. react-native-bdlist/
+2. Open terminal in that folder
+3. Run:
+     npm install
+   This installs dev dependencies (TypeScript, builder-bob, eslint)
+
+STEP 2 — PUT YOUR NAME IN
+───────────────────────────
+Edit package.json and update these fields:
+  - "author": "Your Name <your@email.com>"
+  - "repository.url": "https://github.com/YOUR_USERNAME/react-native-bdlist.git"
+  - "bugs.url": "https://github.com/YOUR_USERNAME/react-native-bdlist/issues"
+  - "homepage": "https://github.com/YOUR_USERNAME/react-native-bdlist#readme"
+
+STEP 3 — BUILD THE PACKAGE
+────────────────────────────
+Run:
+  npm run build
+
+This uses react-native-builder-bob to compile TypeScript into:
+  lib/commonjs/   ← for Node/Jest
+  lib/module/     ← for bundlers (Metro, webpack)
+  lib/typescript/ ← type declarations (.d.ts files)
+
+If build fails, check TypeScript errors first:
+  npm run typescript
+
+STEP 4 — CREATE A GITHUB REPO (recommended)
+────────────────────────────────────────────
+1. Go to https://github.com/new
+2. Name it: react-native-bdlist
+3. Don't initialize with README (you have one)
+4. In your local folder:
+     git init
+     git add .
+     git commit -m "initial release v1.0.0"
+     git remote add origin https://github.com/YOUR_USERNAME/react-native-bdlist.git
+     git push -u origin main
+
+STEP 5 — LOGIN TO NPM
+───────────────────────
+Run:
+  npm login
+
+Enter your npm username, password, and email.
+If you have 2FA enabled, enter the OTP.
+
+To verify you're logged in:
+  npm whoami
+
+STEP 6 — PUBLISH
+─────────────────
+Run:
+  npm publish
+
+First time publishing a new package:
+  npm publish --access public
+
+(The --access public flag is required for scoped packages like @yourname/bdlist.
+ For unscoped packages like react-native-bdlist it's optional but doesn't hurt.)
+
+You'll see output like:
+  npm notice Publishing to https://registry.npmjs.org/
+  + react-native-bdlist@1.0.0
+
+STEP 7 — VERIFY
+────────────────
+Visit:
+  https://www.npmjs.com/package/react-native-bdlist
+
+Your package is now live. Others can install it with:
+  npm install react-native-bdlist @shopify/flash-list
+
+═══════════════════════════════════════════════════════════════
+  UPDATING THE PACKAGE (future releases)
+═══════════════════════════════════════════════════════════════
+
+To release a new version:
+
+  # Patch (bug fix): 1.0.0 → 1.0.1
+  npm version patch
+
+  # Minor (new feature, backward compatible): 1.0.0 → 1.1.0
+  npm version minor
+
+  # Major (breaking change): 1.0.0 → 2.0.0
+  npm version major
+
+Then:
+  npm run build
+  npm publish
+
+npm version automatically updates package.json and creates a git tag.
+
+═══════════════════════════════════════════════════════════════
+  PACKAGE NAME — CHOOSE WISELY
+═══════════════════════════════════════════════════════════════
+
+Current name: react-native-bdlist
+
+Before publishing, check if the name is taken:
+  npm info react-native-bdlist
+
+If taken, options:
+  1. Use a scoped name: @yourname/react-native-bdlist
+     → update "name" in package.json to "@yourname/react-native-bdlist"
+     → always use --access public when publishing
+
+  2. Pick a different name:
+     → rn-bdlist
+     → react-native-bilist
+     → react-native-bidir-list
+     → your own creative name
+
+═══════════════════════════════════════════════════════════════
+  PROMOTING YOUR LIBRARY
+═══════════════════════════════════════════════════════════════
+
+1. Stack Overflow — search these questions and answer them:
+   - "React Native bidirectional infinite scroll"
+   - "FlatList prepend items without scroll jump"
+   - "FlashList prepend without flicker"
+   - "React Native chat load older messages"
+   Explain the problem first, then link your library.
+
+2. GitHub Issues — search these repos for open issues:
+   - github.com/Shopify/flash-list/issues (search "prepend", "bidirectional")
+   - github.com/facebook/react-native/issues (search "prepend", "maintainVisibleContentPosition")
+   Comment with your solution.
+
+3. Reddit — post to:
+   - r/reactnative
+   - r/reactnativedev
+
+4. Twitter/X — tag @shopify, @reactnative
+
+═══════════════════════════════════════════════════════════════
+  FILE STRUCTURE EXPLANATION
+═══════════════════════════════════════════════════════════════
+
+react-native-bdlist/
+├── src/
+│   ├── BiDirectionalList.tsx   ← main component
+│   └── index.ts                ← exports
+├── lib/                        ← generated after npm run build (don't edit)
+│   ├── commonjs/
+│   ├── module/
+│   └── typescript/
+├── package.json                ← package config
+├── tsconfig.json               ← TypeScript config
+├── README.md                   ← docs (shows on npm page)
+├── .npmignore                  ← files excluded from npm package
+├── .gitignore                  ← files excluded from git
+└── PROCEDURE.txt               ← this file
+
