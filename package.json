@@ -34,14 +34,16 @@
   ],
   "author": "Asotibe Princewill",
   "license": "MIT",
+      "@shopify/flash-list": "^1.7.5",
+      "@shopify/flash-list_": ">=1.0.0",
   "peerDependencies": {
-    "@shopify/flash-list": ">=1.0.0",
+        "@shopify/flash-list": "^1.7.5",
     "react": ">=18.0.0",
-    "react-native": ">=0.70.0"
+    "react-native": "0.73.5"
   },
   "devDependencies": {
     "@react-native/eslint-config": "^0.73.1",
-    "@types/react": "^18.2.44",
+    "@types/react": "^19.0.0",
     "eslint": "^8.51.0",
     "react-native-builder-bob": "^0.23.2",
     "typescript": "^5.0.2"
@@ -62,7 +64,7 @@
   "bugs": {
     "url": "https://github.com/bidirectionallist/bdlist/issues"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/react-native-bdlist#readme"
+  "homepage": "https://github.com/bidirectionallist/bdlist/blob/main/README.md"
 }
 
 
